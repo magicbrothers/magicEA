@@ -38,7 +38,7 @@ if (isset($_GET["token"])) {
             case "update":
                 if (isset($_GET["id"])) {
                     $update = array();
-                    if (isset($_GET["reason"])) $update["message"] = $_GET["message"];
+                    if (isset($_GET["message"])) $update["message"] = $_GET["message"];
                     $response = array("status" => ($instance->getObjectDb()->updateMessage($token, $_GET["id"], $update) ? "success" : "error"));
                 }
                 break;
