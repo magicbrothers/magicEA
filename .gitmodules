@@ -1,0 +1,3 @@
+[submodule "src/magicWebTemplate"]
+	path = src/magicWebTemplate
+	url = https://github.com/magicbrothers/magicWebTemplate
