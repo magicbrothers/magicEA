@@ -21,6 +21,7 @@ require_once __DIR__."/Config.php";
 require_once __DIR__."/DB.php";
 require_once __DIR__."/Util.php";
 require_once __DIR__."/ObjectDB.php";
+require_once __DIR__."/../modules/UuidConverter.php";
 
 class MagicEA
 {
@@ -35,6 +36,7 @@ class MagicEA
     private $db;
     private $util;
     private $objectDb;
+    private $uuidConverter;
 
     public function __construct()
     {
@@ -44,7 +46,8 @@ class MagicEA
         $this->adminToken = $data.":".$this->createSecret($data);
         $this->db = new DB();
         $this->util = new Util();
-        $this->objectDb = new ObjectDB();
+	$this->objectDb = new ObjectDB();
+	$this->uuidConverter = new UuidConverter();
     }
 
     public static function getInstance(): MagicEA
@@ -75,6 +78,11 @@ class MagicEA
     public function getObjectDb(): ObjectDB
     {
         return $this->objectDb;
+    }
+
+    public function getUuidConverter(): UuidConverter
+    {
+	    return $this->uuidConverter;
     }
 
     public function getBans(string $token, string $where = ""): array
