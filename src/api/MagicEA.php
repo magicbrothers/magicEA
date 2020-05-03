@@ -41,7 +41,8 @@ class MagicEA
     public function __construct()
     {
         self::$instance = $this;
-        $this->cfg = Config::get();
+	$this->cfg = Config::get();
+	if ($this->cfg["done_setup"] == false) return;
         $data = "admin;;-1";
         $this->adminToken = $data.":".$this->createSecret($data);
         $this->db = new DB();
@@ -143,3 +144,4 @@ class MagicEA
     }
 
 }
+
