@@ -7,7 +7,7 @@ $page_title = $ui->getText("index_title");
 require_once "magicWebTemplate/src/inc/layout_header.php";
 
 if ($loggedin) {
-	echo "<p>".$ui->getText("index_loggedin", array("player" => explode(";", $_SESSION["magicea_token"])[1]))."</p>";
+	echo "<p>".$ui->getText("index_loggedin", array("player" => $ui->getMagicEA()->getUuidConverter()->getName($ui->getUuid())))."</p>";
 } else {
 	echo "<p>".$ui->getText("index_welcome")."</p>";
 	$input_uuid = new Input("input_uuid", "text", "uuid", "", "", true);

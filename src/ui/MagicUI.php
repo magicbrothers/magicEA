@@ -60,6 +60,18 @@ class MagicUI
 	    if ($loggedin && !isset($_SESSION["magicea_token"])) $_SESSION["magicea_token"] = $data.":".$secret;
 	    return $loggedin;
     }
+
+    public function getRole(): string
+    {
+	    if (!$this->isLoggedin()) return "";
+	    return explode(";", $_SESSION["magicea_token"])[0];
+    }
+
+    public function getUuid(): string
+    {
+	    if (!$this->isLoggedin()) return "";
+	    return explode(";", $_SESSION["magicea_token"])[1];
+    }
 }
 
 if (isset($_GET["logout"])) session_destroy();
