@@ -16,6 +16,7 @@ if (isset($_POST["dbhost"])) {
 	$cfg["dbpasswd"] = $_POST["dbpasswd"];
 	$cfg["db"] = $_POST["db"];
 	$cfg["secret"] = bin2hex(random_bytes(32));
+	$cfg["default_lang"] = $_POST["lang"];
 	Config::save($cfg);
 	echo "Setup successful!";
 } else {
@@ -23,8 +24,9 @@ if (isset($_POST["dbhost"])) {
 	$input_dbuser = new Input("setup_dbuser", "text", "dbuser", "", "", true);
 	$input_dbpasswd = new Input("setup_dbpasswd", "password", "dbpasswd");
 	$input_db = new Input("setup_db", "text", "db", "magicea");
+	$input_lang = new Input("setup_lang", "text", "lang");
 	$button = new Button("setup_button", "setup");
-	$form = new Form("setup.php", "post", array($input_dbhost, $input_dbuser, $input_dbpasswd, $input_db), $button);
+	$form = new Form("setup.php", "post", array($input_dbhost, $input_dbuser, $input_dbpasswd, $input_db, $input_lang), $button);
 	echo $form->getHtml();
 }
 

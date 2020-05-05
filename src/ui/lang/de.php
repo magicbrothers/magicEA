@@ -5,6 +5,7 @@ return array(
 	"setup_dbpasswd" => "DB-Passwort",
 	"setup_db" => "Datenbank",
 	"setup_button" => "Einrichten!",
+	"setup_lang" => "Sprache",
 	"index_title" => "Startseite",
 	"index_welcome" => "Willkommen zu magicEA. Hier kannst du deine Bans und Mutes einsehen und einen Entbannungs/-entmutungsantrag stellen.",
 	"input_uuid" => "UUID",

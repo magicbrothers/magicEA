@@ -15,12 +15,16 @@ class MagicUI
     private $strings;
     private $magicea;
 
-    public function __construct(string $language = "en")
+    public function __construct(string $language = "")
     {
         self::$instance = $this;
         $this->language = $language;
-	$this->strings = include_once __DIR__."/lang/".$this->language.".php";
 	$this->magicea = new MagicEA();
+	if ($this->language == "") {
+		if (!$this->getMagicEa()->getCfg()["done_setup"]) $this->language = "en";
+		else $this->language = $this->getMagicEa()->getCfg()["default_lang"];
+	}
+	$this->strings = include_once __DIR__."/lang/".$this->language.".php";
     }
 
     public static function getInstance(): MagicUI
